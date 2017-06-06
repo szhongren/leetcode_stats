@@ -27,7 +27,7 @@ async def CheckHeader(session, user, output):
 
 async def main(loop):
     async with aiohttp.ClientSession(loop=loop, headers={"Connection": "keep-alive"}) as session:
-        with open("actual_users.txt", "w") as out:
+        with open("users.txt", "w") as out:
             await asyncio.gather(*tasks(session, out))
 
 if __name__ == "__main__":

@@ -4,8 +4,7 @@ import asyncio
 base_url = "https://leetcode.com/{}/"
 
 def tasks(session, out):
-    chars = "abcdefghijklmnopqrstuvwxyz0123456789"
-    with open("actual_users.txt", "r") as users:
+    with open("users.txt", "r") as users:
         for user in users.readlines():
             yield GetSolved(session, user.strip(), out)
 
@@ -19,7 +18,7 @@ async def GetSolved(session, user, output):
         end = page.find("\n", spot + 1)
         qns_solved = page[spot:end].strip()
         print("{} - {}".format(user, qns_solved))
-        output.write("{},{}\n".format(user, ",".join(qns_solved.split("/"))))
+        output.write("{},{}\n".format(user, ",".join(map(lambda x: x.strip(), qns_solved.split("/")))))
 
 async def main(loop):
     async with aiohttp.ClientSession(loop=loop, headers={"Connection": "keep-alive"}) as session:
