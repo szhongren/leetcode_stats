@@ -1,10 +1,8 @@
-# Pulls problems solved by users from leetcode
+# Pulls problems solved by users from leetcode by scraping the website
 
-Done with the basic brute-force method of generating all possible usernames and pulling data from the given page, but cannot scale
+should be easy to generalize in order to scrape websites that have per-user data but not overall stats
 
-Better method, pulls usernames from the contest rankings with Selenium
-
-To run, make you have Python 3+
+To run, make you have Python 3+ and Selenium + driver for Chrome
 
 `pip install asyncio aiohttp selenium itertools time`
 
@@ -16,6 +14,6 @@ then
 
 or
 
-`python get_contest_users.py` then `python get_contest_solved.py`
+`python get_contest_users.py` then `python get_contest_solved.py` or `python get_contest_ratings.py`
 
 * faster but should be less random
